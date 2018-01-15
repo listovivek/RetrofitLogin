@@ -2,6 +2,7 @@ package com.example.user.retrofitlogin.retrofit2api;
 
 
 import com.example.user.retrofitlogin.UserLoginReq;
+import com.example.user.retrofitlogin.UserRegReq;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,8 +13,8 @@ import retrofit2.http.POST;
  */
 public interface ApiInterface {
 
-   /* @POST("userSignup")
-    Call<UserRegReq> finregister(@Body UserRegReq userRegReq);*/
+    @POST("userSignup")
+    Call<UserRegReq> finregister(@Body UserRegReq userRegReq);
 
     @POST("login")
     Call<UserLoginReq> finLogin(@Body UserLoginReq userRegReq);

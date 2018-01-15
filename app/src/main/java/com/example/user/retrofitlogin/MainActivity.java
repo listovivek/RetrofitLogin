@@ -26,6 +26,39 @@ public class MainActivity extends AppCompatActivity {
         EName = (EditText) findViewById(R.id.editname);
         EPassword = (EditText) findViewById(R.id.editpassword);
 
+        Button bReg = (Button) findViewById(R.id.button_reg);
+        bReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try{
+                    ApiInterface apiService =
+                            ApiClient.getClient().create(ApiInterface.class);
+
+                    Call<UserRegReq> call = apiService.finregister(new UserRegReq("onee",
+                            "two", "heelllo@gmail.com", "four",
+                            "9042362578", "fst104"));
+
+                    call.enqueue(new Callback<UserRegReq>() {
+                        @Override
+                        public void onResponse(Call<UserRegReq> call,
+                                               Response<UserRegReq> response) {
+                            Log.d("Success", "success");
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserRegReq> call, Throwable t) {
+                            Log.d("Failure", "failure");
+                        }
+                    });
+                }catch (Exception e){
+                    Log.d("error", e.toString());
+                }
+
+
+            }
+        });
+
         Button b = (Button) findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
